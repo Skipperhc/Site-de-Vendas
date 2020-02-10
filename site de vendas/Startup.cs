@@ -29,6 +29,7 @@ namespace site_de_vendas {
                 (options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddScoped<IEventoRepository, EventoRepository>();
+            services.AddScoped<ICasaShowRepository, CasaShowRepository>();
         }
         
 

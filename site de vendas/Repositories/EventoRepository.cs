@@ -14,21 +14,21 @@ namespace site_de_vendas.Repositories {
             _dbContext = dbContext;
         }
         
+        public void Adicionar(Evento entidade) {
+            _dbContext.Add(entidade);
+            _dbContext.SaveChanges();
+        }
+        
+        public Evento Buscar(int id) {
+            return _dbContext.Eventos.FirstOrDefault(x => x.Id == id);
+        }
+        
         public List<Evento> Listar() {
-            return _dbContext.Eventos.ToList();
+            return _dbContext.Eventos.Include(x => x.CasaShow).ToList();
         }
 
         public void Editar(Evento entidade) {
             _dbContext.Entry(entidade).State = EntityState.Modified;
-            _dbContext.SaveChanges();
-        }
-
-        public Evento Buscar(int id) {
-            return _dbContext.Eventos.FirstOrDefault(x => x.Id == id);
-        }
-
-        public void Adicionar(Evento entidade) {
-            _dbContext.Add(entidade);
             _dbContext.SaveChanges();
         }
 

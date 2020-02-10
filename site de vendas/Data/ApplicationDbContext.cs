@@ -7,5 +7,6 @@ namespace site_de_vendas.Data {
         }
         
         public DbSet<Evento> Eventos { get; set; }
+        public DbSet<CasaShow> CasaShows { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using site_de_vendas.Models;
+using site_de_vendas.Models.ViewModel;
 using site_de_vendas.Repositories;
 using site_de_vendas.Repositories.Interface;
 
@@ -13,9 +14,11 @@ namespace site_de_vendas.Controllers {
     public class HomeController : Controller {
 
         private readonly IEventoRepository _eventoRepository;
+        private readonly ICasaShowRepository _casaShowRepository;
 
-        public HomeController(IEventoRepository eventoRepository) {
+        public HomeController(IEventoRepository eventoRepository, ICasaShowRepository casaShowRepository) {
             _eventoRepository = eventoRepository;
+            _casaShowRepository = casaShowRepository;
         }
 
         public IActionResult Index() {
@@ -24,7 +27,9 @@ namespace site_de_vendas.Controllers {
         }
 
         [HttpGet] public IActionResult Criar() {
-            return View();
+            var casaShows = _casaShowRepository.Listar();
+            var viewModel = new  EventoViewModel() {CasaShows = casaShows};
+            return View(viewModel);
         }
 
         [HttpPost] public IActionResult Criar([FromForm]Evento evento) {

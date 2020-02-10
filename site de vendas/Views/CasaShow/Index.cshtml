@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Evento>
+﻿@model IEnumerable<CasaShow>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -18,12 +18,11 @@
             @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.preco)
+            @Html.DisplayNameFor(model => model.Endereco)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CasaShow)
+            @Html.DisplayNameFor(model => model.Capacidade)
         </th>
-        
         <th></th>
     </tr>
     </thead>
@@ -37,10 +36,10 @@
                 @Html.DisplayFor(modelitem => item.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelitem => item.preco)
+                @Html.DisplayFor(modelitem => item.Endereco)
             </td>
             <td>
-                @Html.DisplayFor(modelitem => item.CasaShow)
+                @Html.DisplayFor(modelitem => item.Capacidade)
             </td>
             
             <td>

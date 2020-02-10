@@ -10,19 +10,19 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
+          <e p="CasaShowController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
         </e>
         <e p="Data" t="Include">
           <e p="ApplicationDbContext.cs" t="Include" />
         </e>
-        <e p="Migrations" t="Include">
-          <e p="20200210162245_initial.cs" t="Include" />
-          <e p="20200210162245_initial.Designer.cs" t="Include" />
-          <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
-        </e>
         <e p="Models" t="Include">
+          <e p="CasaShow.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
           <e p="Evento.cs" t="Include" />
+          <e p="ViewModel" t="Include">
+            <e p="EventoViewModel.cs" t="Include" />
+          </e>
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -37,8 +37,10 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Repositories" t="Include">
+          <e p="CasaShowRepository.cs" t="Include" />
           <e p="EventoRepository.cs" t="Include" />
           <e p="Interface" t="Include">
+            <e p="ICasaShowRepository.cs" t="Include" />
             <e p="IEventoRepository.cs" t="Include" />
             <e p="IRepository.cs" t="Include" />
           </e>
@@ -48,6 +50,12 @@
         <e p="Views" t="Include">
           <e p="_ViewImports.cshtml" t="Include" />
           <e p="_ViewStart.cshtml" t="Include" />
+          <e p="CasaShow" t="Include">
+            <e p="Criar.cshtml" t="Include" />
+            <e p="Detalhar.cshtml" t="Include" />
+            <e p="Editar.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
           <e p="Home" t="Include">
             <e p="Criar.cshtml" t="Include" />
             <e p="Detalhar.cshtml" t="Include" />
