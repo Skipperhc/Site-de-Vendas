@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using site_de_vendas.Data;
+using site_de_vendas.Models;
+using site_de_vendas.Repositories;
+using site_de_vendas.Repositories.Interface;
 
 namespace site_de_vendas {
     public class Startup {
@@ -24,6 +27,8 @@ namespace site_de_vendas {
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationDbContext>
                 (options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            
+            services.AddScoped<IEventoRepository, EventoRepository>();
         }
         
 
