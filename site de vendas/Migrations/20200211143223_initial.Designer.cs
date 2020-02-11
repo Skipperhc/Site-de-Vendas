@@ -8,7 +8,7 @@ using site_de_vendas.Data;
 namespace site_de_vendas.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200210190036_initial")]
+    [Migration("20200211143223_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,9 +28,11 @@ namespace site_de_vendas.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Endereco")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
@@ -47,7 +49,14 @@ namespace site_de_vendas.Migrations
                     b.Property<int>("CasaShowId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Data")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GeneroId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<double>("preco")
@@ -57,7 +66,24 @@ namespace site_de_vendas.Migrations
 
                     b.HasIndex("CasaShowId");
 
+                    b.HasIndex("GeneroId");
+
                     b.ToTable("Eventos");
+                });
+
+            modelBuilder.Entity("site_de_vendas.Models.Genero", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Generos");
                 });
 
             modelBuilder.Entity("site_de_vendas.Models.Evento", b =>
@@ -65,6 +91,12 @@ namespace site_de_vendas.Migrations
                     b.HasOne("site_de_vendas.Models.CasaShow", "CasaShow")
                         .WithMany()
                         .HasForeignKey("CasaShowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("site_de_vendas.Models.Genero", "Genero")
+                        .WithMany()
+                        .HasForeignKey("GeneroId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

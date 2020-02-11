@@ -30,6 +30,7 @@ namespace site_de_vendas {
             
             services.AddScoped<IEventoRepository, EventoRepository>();
             services.AddScoped<ICasaShowRepository, CasaShowRepository>();
+            services.AddScoped<IGeneroRepository, GeneroRepository>();
         }
         
 

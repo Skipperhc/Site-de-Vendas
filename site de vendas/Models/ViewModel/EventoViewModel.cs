@@ -4,5 +4,7 @@ namespace site_de_vendas.Models.ViewModel {
     public class EventoViewModel {
         public Evento Evento { get; set; }
         public List<CasaShow> CasaShows { get; set; }
+        public List<Genero> Generos { get; set; }
+        
     }
 }

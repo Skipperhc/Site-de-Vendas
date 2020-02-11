@@ -3,6 +3,7 @@ using System.Security.Policy;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using site_de_vendas.Models;
+using site_de_vendas.Models.ViewModel;
 using site_de_vendas.Repositories.Interface;
 
 namespace site_de_vendas.Controllers {
@@ -17,7 +18,8 @@ namespace site_de_vendas.Controllers {
         // GET
         public IActionResult Index() {
             var listaCasas = _casaShowRepository.Listar();
-            return View(listaCasas);
+            var viewModel = new CasaShowViewModel(){ListaCasaShows = listaCasas};
+            return View(viewModel);
         }
 
         [HttpGet] public IActionResult Criar() {
@@ -46,6 +48,7 @@ namespace site_de_vendas.Controllers {
 
         [HttpPost] public IActionResult Deletar(int id) {
             var casa = _casaShowRepository.Buscar(id);
+            _casaShowRepository.Remover(casa);
             return RedirectToAction(nameof(Index));
         }
     }

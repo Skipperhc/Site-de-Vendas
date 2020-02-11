@@ -15,10 +15,12 @@ namespace site_de_vendas.Controllers {
 
         private readonly IEventoRepository _eventoRepository;
         private readonly ICasaShowRepository _casaShowRepository;
+        private readonly IGeneroRepository _generoRepository;
 
-        public HomeController(IEventoRepository eventoRepository, ICasaShowRepository casaShowRepository) {
+        public HomeController(IEventoRepository eventoRepository, ICasaShowRepository casaShowRepository, IGeneroRepository generoRepository) {
             _eventoRepository = eventoRepository;
             _casaShowRepository = casaShowRepository;
+            _generoRepository = generoRepository;
         }
 
         public IActionResult Index() {
@@ -27,8 +29,9 @@ namespace site_de_vendas.Controllers {
         }
 
         [HttpGet] public IActionResult Criar() {
+            var generos = _generoRepository.Listar();
             var casaShows = _casaShowRepository.Listar();
-            var viewModel = new  EventoViewModel() {CasaShows = casaShows};
+            var viewModel = new  EventoViewModel() {CasaShows = casaShows, Generos = generos};
             return View(viewModel);
         }
 
@@ -40,7 +43,10 @@ namespace site_de_vendas.Controllers {
 
         [HttpGet] public IActionResult Editar(int id) {
             var evento = _eventoRepository.Buscar(id);
-            return View(evento);
+            var generos = _generoRepository.Listar();
+            var casaShows = _casaShowRepository.Listar();
+            var viewModel = new  EventoViewModel() {CasaShows = casaShows, Evento = evento, Generos = generos};
+            return View(viewModel);
         }
         
         [HttpPost] public IActionResult Editar([FromForm] Evento evento) {
@@ -50,7 +56,10 @@ namespace site_de_vendas.Controllers {
 
         [HttpGet] public IActionResult Detalhar(int id) {
             var evento = _eventoRepository.Buscar(id);
-            return View(evento);
+            var generos = _generoRepository.Listar();
+            var casaShows = _casaShowRepository.Listar();
+            var viewModel = new  EventoViewModel() {CasaShows = casaShows, Evento = evento, Generos = generos};
+            return View(viewModel);
         }
 
         [HttpPost] public IActionResult Deletar(int id) {

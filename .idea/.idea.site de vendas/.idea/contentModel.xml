@@ -11,17 +11,28 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="CasaShowController.cs" t="Include" />
+          <e p="GeneroController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
         </e>
         <e p="Data" t="Include">
           <e p="ApplicationDbContext.cs" t="Include" />
         </e>
+        <e p="Migrations" t="Include">
+          <e p="20200211143223_initial.cs" t="Include" />
+          <e p="20200211143223_initial.Designer.cs" t="Include" />
+          <e p="20200211143833_mudandoadata.cs" t="Include" />
+          <e p="20200211143833_mudandoadata.Designer.cs" t="Include" />
+          <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
+        </e>
         <e p="Models" t="Include">
           <e p="CasaShow.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
           <e p="Evento.cs" t="Include" />
+          <e p="Genero.cs" t="Include" />
           <e p="ViewModel" t="Include">
+            <e p="CasaShowViewModel.cs" t="Include" />
             <e p="EventoViewModel.cs" t="Include" />
+            <e p="GeneroViewModel.cs" t="Include" />
           </e>
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -39,9 +50,11 @@
         <e p="Repositories" t="Include">
           <e p="CasaShowRepository.cs" t="Include" />
           <e p="EventoRepository.cs" t="Include" />
+          <e p="GeneroRepository.cs" t="Include" />
           <e p="Interface" t="Include">
             <e p="ICasaShowRepository.cs" t="Include" />
             <e p="IEventoRepository.cs" t="Include" />
+            <e p="IGeneroRepository.cs" t="Include" />
             <e p="IRepository.cs" t="Include" />
           </e>
         </e>
@@ -51,6 +64,12 @@
           <e p="_ViewImports.cshtml" t="Include" />
           <e p="_ViewStart.cshtml" t="Include" />
           <e p="CasaShow" t="Include">
+            <e p="Criar.cshtml" t="Include" />
+            <e p="Detalhar.cshtml" t="Include" />
+            <e p="Editar.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Genero" t="Include">
             <e p="Criar.cshtml" t="Include" />
             <e p="Detalhar.cshtml" t="Include" />
             <e p="Editar.cshtml" t="Include" />
