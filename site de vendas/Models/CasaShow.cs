@@ -5,17 +5,20 @@ namespace site_de_vendas.Models {
         public int Id { get; set; }
         
         
-        [Required(ErrorMessage = "{0} Requerido")]
+        [Required(ErrorMessage = "Nome Requerido")]
+        [StringLength(30,ErrorMessage = "Nome grande demais")]
+        [MinLength(3,ErrorMessage = "Nome muito curto")]
         public string Nome { get; set; }
         
         
-        [Required(ErrorMessage = "{0} Requerido")]
+        [Required(ErrorMessage = "Endereço Requerido")]
         [Display(Name="Endereço")]
+        [MinLength(3,ErrorMessage = "Endereço muito curto")]
         public string Endereco { get; set; }
         
         
-        [Required(ErrorMessage = "{0} Requerido")]
-        [Range(100.0, 5000.0, ErrorMessage = "{0} must be from {1} To {2}")]
+        [Required(ErrorMessage = "Capacidade Requerido")]
+        [Range(100.0, 5000.0, ErrorMessage = "{0} precisa estar entre {1} e {2}")]
         [Display(Name="Capacidade Max")]
         public int Capacidade { get; set; }
     }

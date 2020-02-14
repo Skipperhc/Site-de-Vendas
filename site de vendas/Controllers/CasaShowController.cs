@@ -22,13 +22,13 @@ namespace site_de_vendas.Controllers {
             return View(viewModel);
         }
 
-        [HttpGet] public IActionResult Criar() {
-            return View();
-        }
-
-        [HttpPost] public IActionResult Criar([FromForm] CasaShow casaShow) {
-            _casaShowRepository.Adicionar(casaShow);
-            return RedirectToAction(nameof(Index));
+        [HttpPost] public IActionResult Criar([FromForm] CasaShowViewModel casaShowViewModel) {
+            if (ModelState.IsValid) {
+                _casaShowRepository.Adicionar(casaShowViewModel.CasaShow);
+                return RedirectToAction(nameof(Index));
+            } else {
+                return RedirectToAction("Index", "CasaShow");
+            }
         }
 
         [HttpGet] public IActionResult Editar(int id) {

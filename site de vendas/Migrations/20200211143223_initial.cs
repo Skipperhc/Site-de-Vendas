@@ -13,8 +13,8 @@ namespace site_de_vendas.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true),
-                    Endereco = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: false),
+                    Endereco = table.Column<string>(nullable: false),
                     Capacidade = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -23,14 +23,29 @@ namespace site_de_vendas.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Generos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Generos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Eventos",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: false),
                     preco = table.Column<double>(nullable: false),
-                    CasaShowId = table.Column<int>(nullable: false)
+                    Data = table.Column<int>(nullable: false),
+                    CasaShowId = table.Column<int>(nullable: false),
+                    GeneroId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,12 +56,23 @@ namespace site_de_vendas.Migrations
                         principalTable: "CasaShows",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Eventos_Generos_GeneroId",
+                        column: x => x.GeneroId,
+                        principalTable: "Generos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Eventos_CasaShowId",
                 table: "Eventos",
                 column: "CasaShowId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Eventos_GeneroId",
+                table: "Eventos",
+                column: "GeneroId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -56,6 +82,9 @@ namespace site_de_vendas.Migrations
 
             migrationBuilder.DropTable(
                 name: "CasaShows");
+
+            migrationBuilder.DropTable(
+                name: "Generos");
         }
     }
 }

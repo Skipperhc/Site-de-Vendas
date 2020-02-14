@@ -24,7 +24,7 @@ namespace site_de_vendas.Models {
         [Display(Name="Gênero")]
         public Genero Genero { get; set; }
         
-        [Required(ErrorMessage = "{0} Requerido")]
+        [Required(ErrorMessage = "{0} Requerida")]
         [DataType(DataType.Date)]
         [Display(Name="Data")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]

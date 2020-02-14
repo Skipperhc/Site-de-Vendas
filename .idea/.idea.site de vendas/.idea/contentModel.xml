@@ -22,6 +22,8 @@
           <e p="20200211143223_initial.Designer.cs" t="Include" />
           <e p="20200211143833_mudandoadata.cs" t="Include" />
           <e p="20200211143833_mudandoadata.Designer.cs" t="Include" />
+          <e p="20200214123028_pareando.cs" t="Include" />
+          <e p="20200214123028_pareando.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
