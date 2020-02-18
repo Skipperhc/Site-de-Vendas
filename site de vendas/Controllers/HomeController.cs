@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using site_de_vendas.Models;
@@ -16,11 +17,13 @@ namespace site_de_vendas.Controllers {
         private readonly IEventoRepository _eventoRepository;
         private readonly ICasaShowRepository _casaShowRepository;
         private readonly IGeneroRepository _generoRepository;
+        private IHostingEnvironment _env;
 
-        public HomeController(IEventoRepository eventoRepository, ICasaShowRepository casaShowRepository, IGeneroRepository generoRepository) {
+        public HomeController(IEventoRepository eventoRepository, ICasaShowRepository casaShowRepository, IGeneroRepository generoRepository, IHostingEnvironment enviroment) {
             _eventoRepository = eventoRepository;
             _casaShowRepository = casaShowRepository;
             _generoRepository = generoRepository;
+            _env = enviroment;
         }
 
         public IActionResult Index() {

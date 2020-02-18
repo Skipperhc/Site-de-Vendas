@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection.Metadata.Ecma335;
+using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace site_de_vendas.Models {
     public class Genero {
@@ -8,5 +9,7 @@ namespace site_de_vendas.Models {
         
         [Required(ErrorMessage = "{0} Requerido")]
         public string Nome { get; set; }
+        
+        public string Imagem { get; set; }
     }
 }

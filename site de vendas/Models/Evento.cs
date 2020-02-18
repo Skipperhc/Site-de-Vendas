@@ -31,5 +31,6 @@ namespace site_de_vendas.Models {
         public DateTime Data { get; set; }
         public int CasaShowId { get; set; }
         public int GeneroId { get; set; }
+        
     }
 }
