@@ -86,6 +86,9 @@ namespace site_de_vendas.Controllers {
 
         [HttpPost] public IActionResult Deletar(int id) {
             var casa = _generoRepository.Buscar(id);
+            if (Directory.Exists(casa.Imagem)) {
+                Directory.Delete(casa.Imagem, true);
+            }
             _generoRepository.Remover(casa);
             return RedirectToAction(nameof(Index));
         }
